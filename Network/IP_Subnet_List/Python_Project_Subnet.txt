@@ -1,0 +1,27 @@
+Facts: 
+	- List of IPv4s
+	- List of Subnets
+
+
+def comp(a=ip, b=subnet):
+	If a is in b:
+		Do nothing
+	elif a is not in b:
+		append subnet of a into b
+
+#Resourses you may need
+	IP Spaces
+		A -> 1.0.0.1   to 127.255.255.254
+		B -> 128.1.0.1 to 191.255.255.254
+		C -> 192.0.1.1 to 223.255.254.254
+		D -> 224.0.0.0 to 239.255.255.255
+		E -> 240.0.0.0 to 254.255.255.254
+
+	Private IP Spaces
+		A -> 10.0.0.0 to 10.255.255.255
+		B -> 172.16.0.0 to 172.31.255.255
+		C -> 192.168.0.0 to 192.168.255.255
+
+
+1. Check if IPv4 is in Private IP Space
+2. If not, IPv4 will be in Public IP Space
