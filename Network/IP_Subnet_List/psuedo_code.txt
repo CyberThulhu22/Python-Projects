@@ -1,0 +1,41 @@
+#!/usr/bin/env Python3
+
+# Imports
+
+# Variables
+var1 = [Read list of IPS]
+var2 = {Read list of Subnets but put into dictionary}
+
+#functions
+def netClass(ip): What class is ipaddr. return CIDR
+def possSubs(CIDR): Create list of "Possible Subnets" with range(cidr, 33) -> send to list()
+def compSubs(providedSubs, possibleSubs): Compare two lists to see if any possible exist in provided
+	if possible exists in provided, add IP to subnet dicitionary
+	elif possible doesnt exist, create new dictionary with {IP:[possible subs];}
+
+# Main Code
+for each ip in var1:
+	netClass(ip) # Determines CIDR and returns to use in next function
+	possSubs(CIDR) # Creates list of Possible Subnets
+	compSubs(provided, possible) # Compares, and adds either IP to providedSubs Dict, or adds possibleSubs to IP dict (Should have two dictionaries by the end)
+
+# Output: Should look something like this:
+
+-- IPs and Subnets Discovered --
+Subnet 1:
+	IP 1
+	IP 2
+Subnet 2:
+	IP 3
+Subnet 3:
+	IP 4
+	IP 5
+
+-- IPs Discovered and Possible Subnets --
+
+IP 6:
+	Poss Subnet 1	CIDR: /16
+	Poss Subnet 2	CIDR: /19
+IP 7:
+	Poss Subnet 3	CIDR: /25
+	Poss Subnet 4	CIDR: /27
