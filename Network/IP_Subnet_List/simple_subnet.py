@@ -22,3 +22,5 @@ if __name__=="__main__":
         
     print("Address: {0}".format('.'.join(map(str, addr))))
     print("Network: {0}".format('.'.join(map(str, netw))))
+
+https://github.com/CyberThulhu22/Python_Proj/blob/master/Network/IP_Subnet_List/ip_subnet_organizer.py
