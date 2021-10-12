@@ -1,4 +1,28 @@
+#!/usr/bin/env python3
+
+# Imports
+import argparse
 import sys
+import datetime
+
+# Instantiate Parser
+parser = argparse.ArgumentParser(description='Just a simple')
+
+# Add Parser Arguments
+parser.add_argument('-o', '--output', metavar=r'drive:\outfile.txt', type=str, help='Location to send Output')
+parser.add_argument('-t', '--timestamp', default=False, action='store_true', type=bool, help='Option to Timestamp each newline (Default: False)')
+
+# Parse through created Arguments
+args = parser.parse_args()
+
+
+# Defined Functions
+def check_file_exists():
+    pass
+
+def timestamp_line():
+    return "{}".format(datetime.datetime.now().strftime("%H:%M:%S"))
+
 while True:
     try:
         newlink = input("Enter Website Link: ")
