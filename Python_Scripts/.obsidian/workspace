@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "7247b7a486099124",
+    "type": "split",
+    "children": [
+      {
+        "id": "09793c16037360c2",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "TUTORIAL/TUTORIAL - OBSIDIAN.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a5259e996f756895",
+    "type": "split",
+    "children": [
+      {
+        "id": "efd1888eaafc29d9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "22599ba2993cc0ca",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "9a724da4a6221e6c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "127f1559a6c64d9d",
+    "type": "split",
+    "children": [
+      {
+        "id": "c2281a4ce17f5d63",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b877209ff024e097",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "TUTORIAL/TUTORIAL - OBSIDIAN.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "09793c16037360c2",
+  "lastOpenFiles": [
+    "TUTORIAL/TUTORIAL - OBSIDIAN.md",
+    "1_WebHeadInspect/HeaderInspector.py.md",
+    "TUTORIAL/MORE TUTORIAL - OBSIDIAN.md",
+    "TUTORIAL - OBSIDIAN.md",
+    "MORE TUTORIAL - OBSIDIAN.md",
+    "Untitled.md",
+    "Untitled 1.md"
+  ]
+}
