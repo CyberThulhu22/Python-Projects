@@ -8,21 +8,17 @@ DESCRIPTION:
     Takes a provided URL/ List of URLs and Parses through the headers of the Request.
 """
 import argparse
-from http.server import BaseHTTPRequestHandler
-import re
+#import re
 import sys
 import json
-import requests
 import urllib
 
 # Instantiate Argument Parser
-parser = argparse.ArgumentParser(description='')
+parser = argparse.ArgumentParser(description='', )
 urlgroup = parser.add_mutually_exclusive_group(required=True)
 
 # Add Arguments
-parser.add_argument('', '', metavar='', required=True, type=str, default='', help='')
-
-
+#parser.add_argument('', '', metavar='', required=True, type=str, default='', help='')
 parser.add_argument('-p', '--port', metavar='[port]', required=False, type=int, default=80, help='Allows to select a port if not specified in the URL string')
 parser.add_argument('-o', '--output', metavar=r'[C:\Outfile.txt]', required=False, type=str, help='Outputs the results to a file')
 urlgroup.add_argument('-u', '--url', metavar='[url]', type=str, help='Provide a URL to GET Headers')
@@ -33,19 +29,25 @@ urlgroup.add_argument('-uL', '--urlList', metavar=r'[C:\URL-List.txt]', type=str
 args = parser.parse_args()
 
 # Convert URL into usable address
-def convert_url(ipaddr):
+def convert_url(url_uri):
     pass
 
-# Defined Functions
-def test_connection(ipaddr, tgtport=80):
+def test_connection(url_uri):
     # Test connection to provided URL/URI
-    status_code = urllib.request.urlopen(ipaddr).getcode()
+    status_code = urllib.request.urlopen(url_uri).getcode()
     successful_connect = status_code == 200
     return successful_connect
 
-
-def make_request():
+def get_request(made_req):
     # Makes request to provided URL/URI
+    request_dict = dict()
+    for header in made_req.header_items():
+        jsonl = json.loads(json.dumps(header))
+        request_dict[jsonl[0]] = jsonl[1]
+    return request_dict
+
+def get_response():
+    # Reads the Response from provided URL/URI
     pass
 
 def read_list(provided_list):
@@ -54,10 +56,11 @@ def read_list(provided_list):
         read_list = open_list.readlines()
     return read_list
 
-def main():
-    pass
+def main(url_uri):
+    req = urllib.request.Request(str(url_uri))
 
-# Run ApplicationT
+
+# Run Application
 if __name__ == "__main__":
     while True:
         try:
