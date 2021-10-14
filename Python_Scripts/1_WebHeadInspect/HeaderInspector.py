@@ -56,7 +56,12 @@ def read_list(provided_list):
         read_list = open_list.readlines()
     return read_list
 
-def main(url_uri):
+def output_results(result_to_outfile, outfile=args.output):
+    with open(str(outfile),"a") as output_file:
+        output_file.write(result_to_outfile)
+    return "Results written to {}".format(output_file)
+
+def run(url_uri):
     req = urllib.request.Request(str(url_uri))
 
 
@@ -64,7 +69,7 @@ def main(url_uri):
 if __name__ == "__main__":
     while True:
         try:
-            main()
+            run()
             sys.exit(0)
         except KeyboardInterrupt:
             break
