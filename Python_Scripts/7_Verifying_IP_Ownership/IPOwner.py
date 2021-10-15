@@ -16,14 +16,19 @@ import ipaddress
 from urllib import request
 
 # Instantiate Argument Parser
-parser = argparse.ArgumentParser(description='', )
+description_text = "Outputs IPv4 Information using URL> https://ipinfo.io/"
+usage_text = ""
+epilog_text = "* You will need to signup/login to ipinfo.io (Free) in order to get a 'Token'\n"
+epilog_text += "Note: You will only have 50,000 requests available per month with Free access."
+
+parser = argparse.ArgumentParser(description = f"{description_text}", epilog = f"{epilog_text}",formatter_class=argparse.RawDescriptionHelpFormatter)
 ipgroup = parser.add_mutually_exclusive_group(required=True)
 
 # Create Arguments
-parser.add_argument('-o', '--output', metavar=r'[C:\IP-List.txt]', type=str, required=False, help='')
+parser.add_argument('-o', '--output', metavar=r'C:\IP-List.txt', type=str, required=False, help='')
 parser.add_argument('-t', '--token', metavar='abcdef0123456789', type=str, required=True, help='')
-ipgroup.add_argument('-ip', '--ipaddr', metavar='[ipaddr]', type=str, help='Provide an IPv4 Address')
-ipgroup.add_argument('-ipL', '--iplist', metavar=r'[C:\IP-List.txt]', type=str, help='Provide a list of IPv4 Address to parse')
+ipgroup.add_argument('-ip', '--ipaddr', metavar='ipaddr', type=str, help='Provide an IPv4 Address')
+ipgroup.add_argument('-ipL', '--iplist', metavar=r'C:\IP-List.txt', type=str, help='Provide a list of IPv4 Address to parse')
 
 # Parse Arguments
 args = parser.parse_args()
@@ -75,6 +80,7 @@ if __name__ == "__main__":
             print(dash)
             for i, e in response_dict.items():
                 print("{:<12}{:6}".format(i, e))
+            sys.exit(0)
         
     except KeyboardInterrupt:
         sys.exit(0)
