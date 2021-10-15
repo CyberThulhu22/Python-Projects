@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "09793c16037360c2",
+        "id": "14875080d1179bd6",
         "type": "leaf",
         "state": {
           "type": "empty",
@@ -45,7 +45,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -82,7 +83,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "09793c16037360c2",
+  "active": "14875080d1179bd6",
   "lastOpenFiles": [
     "1_WebHeadInspect/HeaderInspector.py.md",
     "TUTORIAL/TUTORIAL - OBSIDIAN.md",
