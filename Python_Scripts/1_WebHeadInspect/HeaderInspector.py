@@ -11,7 +11,7 @@ import argparse
 #import re
 import sys
 import json
-import urllib
+from urllib import request
 
 # Instantiate Argument Parser
 parser = argparse.ArgumentParser(description='', )
@@ -34,7 +34,7 @@ def convert_url(url_uri):
 
 def test_connection(url_uri):
     # Test connection to provided URL/URI
-    status_code = urllib.request.urlopen(url_uri).getcode()
+    status_code = request.urlopen(url_uri).getcode()
     successful_connect = status_code == 200
     return successful_connect
 
@@ -62,7 +62,7 @@ def output_results(result_to_outfile, outfile=args.output):
     return "Results written to {}".format(output_file)
 
 def run(url_uri):
-    req = urllib.request.Request(str(url_uri))
+    req = request.Request(str(url_uri))
 
 
 # Run Application
