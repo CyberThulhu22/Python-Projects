@@ -18,12 +18,12 @@ args = parser.parse_args()
 
 # Getpass
 def get_apikey():
-    apikey= getpass.getpass()
+    apikey= getpass.getpass("API_KEY >")
     return apikey
 
 if __name__ == "__main__":
     if args.apikey == None:
-        API_KEY = get_apikey("API_KEY >")
+        API_KEY = get_apikey()
     else:
         API_KEY = args.apikey
     
