@@ -111,7 +111,6 @@ if __name__ == "__main__":
             for ipaddr in readFile(args.iplist):
                 listed_address = IPinfoIO(ipaddr, args.token)
                 if listed_address.check_valid_ip_struct() == True:
-#                    threading.Thread(target=print(listed_address.test_connection())).start()
                     pass         
         end_time = datetime.now()
         exec_time = end_time - start_time
