@@ -18,13 +18,9 @@ args = parser.parse_args()
 
 # Getpass
 def get_apikey():
-    apikey= getpass.getpass("API_KEY >")
-    return apikey
+    return getpass.getpass("API_KEY >")
 
 if __name__ == "__main__":
-    if args.apikey == None:
-        API_KEY = get_apikey()
-    else:
-        API_KEY = args.apikey
-    
+    if args.apikey == None: API_KEY = get_apikey()
+    else: API_KEY = args.apikey
     print(API_KEY)

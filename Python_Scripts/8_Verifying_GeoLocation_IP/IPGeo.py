@@ -92,9 +92,6 @@ def output_results(result_to_outfile, outfile=args.output):
         output_file.write(result_to_outfile)
     return "Results written to {}".format(output_file)
 
-
-
-
 if __name__ == "__main__":
 
     try:
