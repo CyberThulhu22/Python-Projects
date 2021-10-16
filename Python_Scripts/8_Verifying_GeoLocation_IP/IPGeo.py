@@ -71,6 +71,9 @@ class IPGeolocationIO:
                 response_data = httperr.read().decode("utf-8", "ignore")
                 print(f"[-] ERROR (HTTP Error): {response_data}")
                 sys.exit(1)
+    def get_apikey():
+        print("[+] TASK: Please Copy and Paste your API key!")
+        return getpass.getpass("\t[>] API_KEY: ")
 
     def build_query(self):
         building_url = "{}/ipgeo?apiKey={}&ip={}".format(self.url, self.apikey, self.ipaddr)
@@ -97,42 +100,50 @@ def read_file(file=args.iplist):
     return outfile
 
 def output_results(result_to_outfile, outfile=args.output):
-    with open(str(outfile),"a") as output_file:
-        output_file.write(result_to_outfile)
-    return "Results written to {}".format(output_file)
+    if outfile != None:
+        with open(str(outfile),"a") as output_file:
+            output_file.write(result_to_outfile)
+        return "[!] INFO: Results written to {}".format(output_file)
+    else:
+        return result_to_outfile
 
-def get_apikey():
-    print("[+] TASK: Please Copy and Paste your API key!")
-    return getpass.getpass("\t[>] API_KEY: ")
+def json_print(result_data, result_ipaddr=args.ipaddr):
+    dash = "-" * 50
+    result_header = dash
+    result_header += f"\nIP ADDRESS: {result_ipaddr}"
+    result_header += "\n{:<25}{:6}\n".format("HEADER", "DATA")
+    result_header += dash
+    for key, value in result_data.items():
+        if type(value) == dict:
+            res_data = json.dumps(value)
+            result_header += "{:<25}{:6}".format(key, res_data)
+        else:
+            result_header += "{:<25}{:6}".format(key, value)
+    return result_header
+
 
 if __name__ == "__main__":
 
     try:
         start_time = datetime.now()
         IPGeolocationIO().test_connection()
-        if args.apikey == None: args.apikey = get_apikey()
+        if args.apikey == None: args.apikey = IPGeolocationIO().get_apikey()
         
         if args.ipaddr != None:
             listed_address = IPGeolocationIO(args.ipaddr, args.apikey)
             if listed_address.check_valid_ip_struct() == True:
                 built_url = listed_address.build_query()
                 response_data = json.loads(listed_address.make_request(built_url))
-                pprint.pprint(response_data)
-                dash = "-" * 50
-                print(dash, f"\nIP ADDRESS: {args.ipaddr}\n", "\n{:<25}{:6}\n".format("HEADER","DATA"), dash)
-                for key, value in response_data.items():
-                    if type(value) == dict:
-                        res_data = json.dumps(value)
-                        print("{:<25}{:6}".format(key, res_data))
-                    else:
-                        print("{:<25}{:6}".format(key, value))
-                sys.exit(0)
+                output_results(json_print(response_data))
+
 
         elif args.iplist != None:
             for ipaddr in read_file(args.iplist):
                 listed_address = IPGeolocationIO(ipaddr, args.apikey)
                 if listed_address.check_valid_ip_struct() == True:
-                    pass
+                    built_url = listed_address.build_query()
+                    response_data = json.loads(listed_address.make_request(built_url))
+                    output_results(json_print(response_data))
 
         end_time = datetime.now()
         exec_time = end_time - start_time
