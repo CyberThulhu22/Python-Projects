@@ -9,7 +9,6 @@ TO-DO:
 """
 import sys
 import json
-import pprint
 import argparse
 import ipaddress
 import getpass
@@ -17,8 +16,9 @@ from urllib import request, error
 from datetime import datetime
 
 # Instantiate Argument Parser
-desc_text = ""
-epilog_text = ""
+desc_text = "Queries and IP Address or List of IP Addresses for Information from API IPGeolocation IO Website"
+epilog_text = "*You will need an API Key from https://api.ipgeolocation.io to run this script\n"
+epilog_text += ""
 
 argumnt = argparse.ArgumentParser(description= f"{desc_text}", epilog= f"{epilog_text}", formatter_class= argparse.RawDescriptionHelpFormatter)
 ipgroup = argumnt.add_mutually_exclusive_group(required=True)
@@ -28,7 +28,7 @@ authkey = argumnt.add_mutually_exclusive_group(required=False)
 output_help_text = "Enter Path to File that Results will be Recorded to"
 ipaddr_help_text = "Enter IP Address"
 iplist_help_text = "Enter Path to File containing IP Addresses, each on a new line"
-apikey_help_text = "Enter API Key (CAUTION: Putting API KEY in line could save into Command Line History)"
+apikey_help_text = "Enter API Key for Batch Mode ONLY (CAUTION: Putting API KEY In-Line could be a Security Concern)"
 
 argumnt.add_argument('-o', '--output', metavar=r'C:\IP-List.txt', type=str, required=False, help=output_help_text)
 ipgroup.add_argument('-i', '--ipaddr', metavar='ipaddr', type=str, help=ipaddr_help_text)
@@ -72,8 +72,8 @@ class IPGeolocationIO:
                 print(f"[-] ERROR (HTTP Error): {response_data}")
                 sys.exit(1)
     def get_apikey():
-        print("[+] TASK: Please Copy and Paste your API key!")
-        return getpass.getpass("\t[>] API_KEY: ")
+        print("[+] TASK: Please Copy and Paste your API key! (Input will be Invisible)")
+        return getpass.getpass("   [>] API_KEY: ")
 
     def build_query(self):
         building_url = "{}/ipgeo?apiKey={}&ip={}".format(self.url, self.apikey, self.ipaddr)
@@ -100,12 +100,12 @@ def read_file(file=args.iplist):
     return outfile
 
 def output_results(result_to_outfile, outfile=args.output):
+    # Outputs results to a file or to the screen
     if outfile != None:
         with open(str(outfile),"a") as output_file:
             output_file.write(result_to_outfile)
         return "[!] INFO: Results written to {}".format(output_file)
-    else:
-        return result_to_outfile
+    else: return result_to_outfile
 
 def json_print(result_data, result_ipaddr=args.ipaddr):
     dash = "-" * 50
@@ -117,8 +117,7 @@ def json_print(result_data, result_ipaddr=args.ipaddr):
         if type(value) == dict:
             res_data = json.dumps(value)
             result_header += "{:<25}{:6}".format(key, res_data)
-        else:
-            result_header += "{:<25}{:6}".format(key, value)
+        else: result_header += "{:<25}{:6}".format(key, value)
     return result_header
 
 
@@ -135,7 +134,6 @@ if __name__ == "__main__":
                 built_url = listed_address.build_query()
                 response_data = json.loads(listed_address.make_request(built_url))
                 output_results(json_print(response_data))
-
 
         elif args.iplist != None:
             for ipaddr in read_file(args.iplist):
