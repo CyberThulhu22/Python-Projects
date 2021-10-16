@@ -71,7 +71,7 @@ class IPGeolocationIO:
                 response_data = httperr.read().decode("utf-8", "ignore")
                 print(f"[-] ERROR (HTTP Error): {response_data}")
                 sys.exit(1)
-    def get_apikey():
+    def get_apikey(self):
         print("[+] TASK: Please Copy and Paste your API key! (Input will be Invisible)")
         return getpass.getpass("   [>] API_KEY: ")
 
@@ -80,7 +80,7 @@ class IPGeolocationIO:
         return building_url
 
     def make_request(self, req_url):
-        print("[+] TASK: Making request to {}".format(req_url))
+        print(f"[+] TASK: Making request to https://api.ipgeolocation.io/ipgeo?apiKey=*HIDDEN*&ip={self.ipaddr}")
         try:
             with request.urlopen(req_url) as req:
                 return req.read().decode("utf-8")
@@ -112,12 +112,12 @@ def json_print(result_data, result_ipaddr=args.ipaddr):
     result_header = dash
     result_header += f"\nIP ADDRESS: {result_ipaddr}"
     result_header += "\n{:<25}{:6}\n".format("HEADER", "DATA")
-    result_header += dash
+    result_header += dash + "\n"
     for key, value in result_data.items():
         if type(value) == dict:
             res_data = json.dumps(value)
-            result_header += "{:<25}{:6}".format(key, res_data)
-        else: result_header += "{:<25}{:6}".format(key, value)
+            result_header += "{:<25}{:6}\n".format(key, res_data)
+        else: result_header += "{:<25}{:6}\n".format(key, value)
     return result_header
 
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
             if listed_address.check_valid_ip_struct() == True:
                 built_url = listed_address.build_query()
                 response_data = json.loads(listed_address.make_request(built_url))
-                output_results(json_print(response_data))
+                print(output_results(json_print(response_data)))
 
         elif args.iplist != None:
             for ipaddr in read_file(args.iplist):
@@ -141,11 +141,12 @@ if __name__ == "__main__":
                 if listed_address.check_valid_ip_struct() == True:
                     built_url = listed_address.build_query()
                     response_data = json.loads(listed_address.make_request(built_url))
-                    output_results(json_print(response_data))
+                    print(output_results(json_print(response_data, ipaddr)))
 
         end_time = datetime.now()
         exec_time = end_time - start_time
         print(f"[!] INFO: Total execution time for the function {exec_time}")
+        sys.exit(0)
 
     except KeyboardInterrupt:
         print("[-] KEY INTERRUPT: Program will now EXIT!")
