@@ -4,15 +4,15 @@ NAME: IPGeo.py
 VERSION: 0.0.0
 AUTHOR: Jesse Leverett (CyberThulhu)
 STATUS: Building Initial code framework
-DESCRIPTION:
+DESCRIPTION: Queries and IP Address or List of IP Addresses for Information from API IPGeolocation IO Website
 TO-DO:
 """
 import sys
 import json
+import pprint
 import argparse
 import ipaddress
 import getpass
-import threading
 from urllib import request, error
 from datetime import datetime
 
@@ -22,13 +22,13 @@ epilog_text = ""
 
 argumnt = argparse.ArgumentParser(description= f"{desc_text}", epilog= f"{epilog_text}", formatter_class= argparse.RawDescriptionHelpFormatter)
 ipgroup = argumnt.add_mutually_exclusive_group(required=True)
-authkey = argumnt.add_mutually_exclusive_group(required=True)
+authkey = argumnt.add_mutually_exclusive_group(required=False)
 
 # Create Arguments
-output_help_text = ""
-ipaddr_help_text = ""
-iplist_help_text = ""
-apikey_help_text = ""
+output_help_text = "Enter Path to File that Results will be Recorded to"
+ipaddr_help_text = "Enter IP Address"
+iplist_help_text = "Enter Path to File containing IP Addresses, each on a new line"
+apikey_help_text = "Enter API Key (CAUTION: Putting API KEY in line could save into Command Line History)"
 
 argumnt.add_argument('-o', '--output', metavar=r'C:\IP-List.txt', type=str, required=False, help=output_help_text)
 ipgroup.add_argument('-i', '--ipaddr', metavar='ipaddr', type=str, help=ipaddr_help_text)
@@ -67,15 +67,24 @@ class IPGeolocationIO:
             except error.URLError:
                 print("[-] ERROR (WIN: 10061): No connection could be made because the target machine actively refused it.")
                 sys.exit(1)
+            except error.HTTPError as httperr:
+                response_data = httperr.read().decode("utf-8", "ignore")
+                print(f"[-] ERROR (HTTP Error): {response_data}")
+                sys.exit(1)
 
-    def ipinfo_build_query(self):
-        built_url = "{}/ipgeo?apiKey={}&ip={}}".format(self.url, self.apikey, self.ipaddr)
-        return built_url
+    def build_query(self):
+        building_url = "{}/ipgeo?apiKey={}&ip={}".format(self.url, self.apikey, self.ipaddr)
+        return building_url
 
     def make_request(self, req_url):
-        print("Making request to {}".format(req_url))
-        with request.urlopen(req_url) as req:
-            return req.read().decode("utf-8")
+        print("[+] TASK: Making request to {}".format(req_url))
+        try:
+            with request.urlopen(req_url) as req:
+                return req.read().decode("utf-8")
+        except error.HTTPError as httperr:
+                response_data = httperr.read().decode("utf-8", "ignore")
+                print(f"[-] ERROR (HTTP Error): {response_data}")
+                sys.exit(1)
 
 
 # Defined Functions
@@ -92,16 +101,32 @@ def output_results(result_to_outfile, outfile=args.output):
         output_file.write(result_to_outfile)
     return "Results written to {}".format(output_file)
 
+def get_apikey():
+    print("[+] TASK: Please Copy and Paste your API key!")
+    return getpass.getpass("\t[>] API_KEY: ")
+
 if __name__ == "__main__":
 
     try:
         start_time = datetime.now()
         IPGeolocationIO().test_connection()
-
+        if args.apikey == None: args.apikey = get_apikey()
+        
         if args.ipaddr != None:
             listed_address = IPGeolocationIO(args.ipaddr, args.apikey)
-            if listed_address.check_valid_ip_struct():
-                pass
+            if listed_address.check_valid_ip_struct() == True:
+                built_url = listed_address.build_query()
+                response_data = json.loads(listed_address.make_request(built_url))
+                pprint.pprint(response_data)
+                dash = "-" * 50
+                print(dash, f"\nIP ADDRESS: {args.ipaddr}\n", "\n{:<25}{:6}\n".format("HEADER","DATA"), dash)
+                for key, value in response_data.items():
+                    if type(value) == dict:
+                        res_data = json.dumps(value)
+                        print("{:<25}{:6}".format(key, res_data))
+                    else:
+                        print("{:<25}{:6}".format(key, value))
+                sys.exit(0)
 
         elif args.iplist != None:
             for ipaddr in read_file(args.iplist):
@@ -111,20 +136,8 @@ if __name__ == "__main__":
 
         end_time = datetime.now()
         exec_time = end_time - start_time
-        print(f"Total execution time for the function {exec_time}")
+        print(f"[!] INFO: Total execution time for the function {exec_time}")
 
     except KeyboardInterrupt:
         print("[-] KEY INTERRUPT: Program will now EXIT!")
         sys.exit(0)
-   
-    #     if test_connection("https://ipinfo.io/") == True:
-    #         check_valid_ip_struct()
-    #         build_url = ipinfo_build_query()
-    #         response_dict = json.loads(make_request(build_url))
-    #         dash = "-" * 40
-    #         print(dash)
-    #         print("{:<12}{:6}".format("HEADER", "DATA"))
-    #         print(dash)
-    #         for i, e in response_dict.items():
-    #             print("{:<12}{:6}".format(i, e))
-    #         sys.exit(0)

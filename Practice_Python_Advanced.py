@@ -20,21 +20,23 @@ parser.add_argument('-a', "--apikey", metavar='abc123', nargs="?",default=None, 
 args = parser.parse_args()
 
 # Getpass
-def get_apikey():
-    return getpass.getpass("API_KEY >")
+
 
 def test_connection(apikey=args.apikey, ipaddr=args.ipaddr):
     try:
         status_code = request.urlopen(f"https://api.ipgeolocation.io/ipgeo?apiKey={apikey}&ip={ipaddr}").getcode()
         if status_code == 200:
             return status_code
-    except error.HTTPError:
-        print(f"[-] ERROR (HTTPErr: {error.HTTPError().code})")
+    except error.HTTPError as httperr:
+        response_data = httperr.read().decode("utf-8", "ignore")
+        print(f"[-] ERROR (HTTPErr: {response_data})")
         sys.exit(1)
-    
+
+def get_apikey():
+    print("[+] TASK: Please Copy and Paste your API key!")
+    return getpass.getpass("[*] API_KEY: ")    
 
 if __name__ == "__main__":
-    if args.apikey == None: API_KEY = get_apikey()
-    else: API_KEY = args.apikey
-    print(API_KEY)
+    if args.apikey == None: args.apikey = get_apikey()
+    print(args.apikey)
     print(test_connection())
