@@ -7,8 +7,11 @@
         "id": "14875080d1179bd6",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "PasswordFinder_Mindmap.md",
+            "mode": "source"
+          }
         }
       }
     ],
@@ -45,12 +48,11 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 274
   },
   "right": {
     "id": "127f1559a6c64d9d",
@@ -66,6 +68,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "PasswordFinder_Mindmap.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,12 +88,14 @@
   },
   "active": "14875080d1179bd6",
   "lastOpenFiles": [
-    "1_WebHeadInspect/HeaderInspector.py.md",
+    "PasswordFinder_Mindmap.md",
+    "PasswordFinder_Mindmap.md.md",
     "TUTORIAL/TUTORIAL - OBSIDIAN.md",
+    "Untitled.md",
+    "1_WebHeadInspect/HeaderInspector.py.md",
     "TUTORIAL/MORE TUTORIAL - OBSIDIAN.md",
     "TUTORIAL - OBSIDIAN.md",
     "MORE TUTORIAL - OBSIDIAN.md",
-    "Untitled.md",
     "Untitled 1.md"
   ]
 }
