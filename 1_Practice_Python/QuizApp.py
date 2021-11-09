@@ -11,10 +11,57 @@ TO-DO:
 COPYRIGHT © 2021 Jesse Leverett
 """
 
+# Imports
 import sqlite3
+import argparse
 from sqlite3 import Error
+from decimal import Decimal
 
-#=================================================================================================
+# Standard Variables
+__author__ = "Jesse Leverett"
+__copyright__ = "Copyright (C) 2021 Jesse Leverett"
+__license__ = "MIT License"
+__version__ = "1.0"
+
+def display_banner():
+    print(f"""
+******************************************************************
+██╗    ██╗██╗██████╗ ███████╗██████╗ ██╗   ██╗██████╗ ██╗████████╗
+██║    ██║██║██╔══██╗██╔════╝██╔══██╗██║   ██║██╔══██╗██║╚══██╔══╝
+██║ █╗ ██║██║██████╔╝█████╗  ██║  ██║██║   ██║██████╔╝██║   ██║
+██║███╗██║██║██╔══██╗██╔══╝  ██║  ██║██║   ██║██╔═══╝ ██║   ██║
+╚███╔███╔╝██║██║  ██║███████╗██████╔╝╚██████╔╝██║     ██║   ██║
+ ╚══╝╚══╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝     ╚═╝   ╚═╝
+                 ██████╗ ██╗   ██╗██╗███████╗
+                ██╔═══██╗██║   ██║██║╚══███╔╝
+                ██║   ██║██║   ██║██║  ███╔╝
+                ██║▄▄ ██║██║   ██║██║ ███╔╝
+                ╚██████╔╝╚██████╔╝██║███████╗
+                 ╚══▀▀═╝  ╚═════╝ ╚═╝╚══════╝
+******************************************************************
+         Managment Server running version = {__version__}
+******************************************************************
+""")
+
+# Instantiate Argument Parser
+PROG_TEXT = ""
+DESC_TEXT = ""
+EPIL_TEXT = ""
+
+parser = argparse.ArgumentParser(prog = PROG_TEXT,
+                                description = DESC_TEXT,
+                                epilog = EPIL_TEXT,
+                                formatter_class = argparse.RawDescriptionHelpFormatter)
+
+# Create Arguments
+HELP_TEXT = ""
+
+parser.add_argument('-o', metavar="", type=str, required=False, help=HELP_TEXT)
+parser.add_argument('-db', metavar="", type=str, required=True, help=HELP_TEXT)
+
+# Parse Arguments
+args = parser.parse_args()
+
 def wiredupitquiz():
     try:
         db_file = "C:\sqlite\database\quizdatabase.db"
@@ -60,12 +107,9 @@ def wiredupitquiz():
             number = number + 1 #This is the next question number
             print("\n"*5)
 
-
-
-
         # Scoring what you made
-        import decimal
-        from decimal import Decimal
+        
+        
         x = score
         y = len(data)
         precentage = Decimal(x/y)
@@ -87,8 +131,6 @@ def wiredupitquiz():
     except Error as e:
         print(e)
 
-#=================================================================================================
-
 def startquiz():
     print("MAIN MENU")
     print("-"*20)
@@ -103,26 +145,7 @@ def startquiz():
         if menu_choices[menu_choice] == 2:
             exit()
 
-#=================================================================================================
 
-print("""
 
-******************************************************************
-██╗    ██╗██╗██████╗ ███████╗██████╗ ██╗   ██╗██████╗ ██╗████████╗
-██║    ██║██║██╔══██╗██╔════╝██╔══██╗██║   ██║██╔══██╗██║╚══██╔══╝
-██║ █╗ ██║██║██████╔╝█████╗  ██║  ██║██║   ██║██████╔╝██║   ██║
-██║███╗██║██║██╔══██╗██╔══╝  ██║  ██║██║   ██║██╔═══╝ ██║   ██║
-╚███╔███╔╝██║██║  ██║███████╗██████╔╝╚██████╔╝██║     ██║   ██║
- ╚══╝╚══╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝  ╚═════╝ ╚═╝     ╚═╝   ╚═╝
-                 ██████╗ ██╗   ██╗██╗███████╗
-                ██╔═══██╗██║   ██║██║╚══███╔╝
-                ██║   ██║██║   ██║██║  ███╔╝
-                ██║▄▄ ██║██║   ██║██║ ███╔╝
-                ╚██████╔╝╚██████╔╝██║███████╗
-                 ╚══▀▀═╝  ╚═════╝ ╚═╝╚══════╝
-******************************************************************
-         Managment Server running version = 0.0.1
-******************************************************************
-
-""")
-startquiz()
+if __name__ == "__main__":
+    startquiz()
