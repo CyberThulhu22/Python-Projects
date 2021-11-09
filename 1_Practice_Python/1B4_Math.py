@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
-
-#!!!# NEED TO FINISH MEAN FUNCTION #!!!#
+#-*- Coding: utf-8 -*-
+"""
+NAME: Math_Learning.py
+VERSION: 1.0
+AUTHOR: Jesse Leverett (CyberThulhu)
+STATUS: Building Initial code framework
+DESCRIPTION: 
+TO-DO:
+    [ ] Impliment 'mean' function
+COPYRIGHT © 2021 Jesse Leverett
+"""
 
 #from math import pi, sqrt
 
