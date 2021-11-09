@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+#-*- Coding: utf-8 -*-
+
+"""
+NAME: 
+VERSION: 1.0
+AUTHOR: Jesse Leverett (CyberThulhu)
+STATUS: Building Initial code framework
+DESCRIPTION: 
+TO-DO:
+COPYRIGHT © 2021 Jesse Leverett
+"""
 
 import sys
 
@@ -23,4 +34,4 @@ if __name__=="__main__":
     print("Address: {0}".format('.'.join(map(str, addr))))
     print("Network: {0}".format('.'.join(map(str, netw))))
 
-https://github.com/CyberThulhu22/Python_Proj/blob/master/Network/IP_Subnet_List/ip_subnet_organizer.py
+#https://github.com/CyberThulhu22/Python_Proj/blob/master/Network/IP_Subnet_List/ip_subnet_organizer.py

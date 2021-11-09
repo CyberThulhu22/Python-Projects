@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+#-*- Coding: utf-8 -*-
+
+"""
+NAME: 
+VERSION: 1.0
+AUTHOR: Jesse Leverett (CyberThulhu)
+STATUS: Building Initial code framework
+DESCRIPTION: 
+TO-DO:
+COPYRIGHT © 2021 Jesse Leverett
+"""
+
 import requests
 from pprint import pprint as pp
 API_KEY = "68692299875344e9b961272cef8b69a6"

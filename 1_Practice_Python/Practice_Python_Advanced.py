@@ -11,7 +11,6 @@ TO-DO:
 COPYRIGHT © 2021 Jesse Leverett
 """
 
-
 # Imports
 import sys
 import argparse
