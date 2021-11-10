@@ -14,7 +14,6 @@ COPYRIGHT © 2021 Jesse Leverett
 # Imports
 import sqlite3
 import argparse
-from sqlite3 import Error
 from decimal import Decimal
 
 # Standard Variables
@@ -57,7 +56,7 @@ parser = argparse.ArgumentParser(prog = PROG_TEXT,
 HELP_TEXT = ""
 
 parser.add_argument('-o', metavar="", type=str, required=False, help=HELP_TEXT)
-parser.add_argument('-db', metavar="", type=str, required=True, help=HELP_TEXT)
+parser.add_argument('-db', metavar="sqlite.db", type=str, required=True, help=HELP_TEXT)
 
 # Parse Arguments
 args = parser.parse_args()
