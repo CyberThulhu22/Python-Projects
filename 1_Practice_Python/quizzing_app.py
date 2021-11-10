@@ -27,14 +27,16 @@ import logging
 import sqlite3
 import argparse
 from decimal import Decimal
-from colorama import init, Fore, Back, Style
-import colorama
-
-# Initialize Colorama
-init()
+from datetime import datetime
+try:
+    from colorama import init, Fore, Back, Style
+    init()
+except ImportError:
+    print("[-] ERROR: 'colorama' is a required package to run this program")
+    sys.exit(1)
 
 def display_banner():
-    print(Fore.GREEN + f"""
+    print(f"""
 ******************************************************************
 ██╗    ██╗██╗██████╗ ███████╗██████╗ ██╗   ██╗██████╗ ██╗████████╗
 ██║    ██║██║██╔══██╗██╔════╝██╔══██╗██║   ██║██╔══██╗██║╚══██╔══╝
@@ -51,7 +53,7 @@ def display_banner():
 ******************************************************************
             Managment Server running version {__version__}
 ******************************************************************
-""" + Fore.RESET)
+""")
 
 # Instantiate Argument Parser
 PROG_TEXT = "quizzing_app"
@@ -106,7 +108,15 @@ def main() -> None:
     display_banner()
 
 if __name__ == "__main__":
+    print(Fore.GREEN + display_banner() + Fore.RESET)
     try:
+        start_time = datetime.now()
         main()
+        end_time = datetime.now()
+        exec_time = end_time - start_time
+        print(f"[!] INFO: Total execution time for the function {exec_time}")
+        sys.exit(0)
+
     except KeyboardInterrupt:
+        print("[-] KEY INTERRUPT: Program will now EXIT!")
         sys.exit(0)

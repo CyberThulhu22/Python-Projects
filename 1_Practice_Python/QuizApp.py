@@ -14,6 +14,7 @@ COPYRIGHT © 2021 Jesse Leverett
 # Imports
 import sqlite3
 import argparse
+from sqlite3 import Error
 from decimal import Decimal
 
 # Standard Variables
