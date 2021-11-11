@@ -100,7 +100,7 @@ def print_all(f):
 def rewind(f):
     f.seek(0)
 
-def print_a_line(line_count, f)
+def print_a_line(line_count, f):
     print(line_count, f.readline())
 
 current_file = open(input_file)

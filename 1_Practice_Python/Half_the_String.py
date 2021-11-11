@@ -9,14 +9,9 @@ STATUS: Building Initial code framework
 DESCRIPTION: 
 TO-DO:
 COPYRIGHT © 2021 Jesse Leverett
-"""
 
-## Goal: Half the String that is typed
 
-"""
-Return first half of a string.
-Title:
-Half the String
+Goal: Half the String that is typed; Return first half of a string.
 
 Description:
 Make a program that prompts the user to enter a string.

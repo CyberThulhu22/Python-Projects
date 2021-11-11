@@ -2,11 +2,12 @@
 #-*- Coding: utf-8 -*-
 
 """
-NAME: 
-VERSION: 1.0
+NAME: _PYTHON_LEARNING_CLASSES.py
+VERSION: None
 AUTHOR: Jesse Leverett (CyberThulhu)
 STATUS: Building Initial code framework
-DESCRIPTION: 
+DESCRIPTION: Collection Learning Function Building
 TO-DO:
+    [] Cover a Basic Class
 COPYRIGHT © 2021 Jesse Leverett
 """
