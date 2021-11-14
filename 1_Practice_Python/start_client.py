@@ -22,7 +22,7 @@ import socket
 
 # DEFINED VARIABLES
 TARGET_SERVER = "127.0.0.1"
-TARGET_PORT = 60050
+TARGET_PORT = 60060
 
 # DEFINED CLASS
 class StartClient:
@@ -40,6 +40,8 @@ class StartClient:
                 prepared_msg = str(input("\nCLIENT>> "))
                 encoded_msg = bytes(prepared_msg, "utf-8")
                 sock.send(encoded_msg)
+                if prepared_msg.lower() != 'exit':
+                    bytes(sock.recv(1024)).decode("utf-8")
 
 
 def main():
