@@ -8,6 +8,7 @@ AUTHOR: Jesse Leverett (CyberThulhu)
 STATUS: Building Initial code framework
 DESCRIPTION: Collection Learning Function Building
 TO-DO: None
+USAGE:
 COPYRIGHT © 2021 Jesse Leverett
 """
 

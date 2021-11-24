@@ -2,7 +2,7 @@
 #-*- Coding: utf-8 -*-
 
 """
-NAME: _PYTHON_LEARNING_CLASSES.py
+NAME: _PYTHON_LEARNING_Hello_World.py
 VERSION: None
 AUTHOR: Jesse Leverett (CyberThulhu)
 STATUS: Building Initial code framework

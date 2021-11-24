@@ -6,23 +6,23 @@
 
 ## Python Learning Index
 
-| Topic | Description | Links |
-|:------|:------------|:-----:|
-|       |             | []()  |
+| Topic | Version | Description | Links | Status     |
+|:------|:-------:|:------------|:-----:|:----------:|
+|       |         |             | []()  | Not Started|
 ---
 
 ## Python Fun Projects
 
-| Topic         | Description                                           | Links                                                                                                  |
-|:--------------|:------------------------------------------------------|:------------------------------------------------------------------------------------------------------:|
-| Coffee.py     | Fun Project to Print a Cup of Coffee and Fill it.     | [Coffee](https://github.com/CyberThulhu22/Python-Projects/blob/master/2_Fun_Python/Coffee.py)          |
-| moreCoffee.py | Updated Project to Print a Cup of Coffee and Fill it. | [More Coffee](https://github.com/CyberThulhu22/Python-Projects/blob/master/2_Fun_Python/moreCoffee.py) |
+| Topic         | Version | Description                                           | Links                                                                                                  | Status   |
+|:--------------|:-------:|:------------------------------------------------------|:------------------------------------------------------------------------------------------------------:|:--------:|
+| Coffee.py     | 1.0     | Fun Project to Print a Cup of Coffee and Fill it.     | [Coffee](https://github.com/CyberThulhu22/Python-Projects/blob/master/2_Fun_Python/Coffee.py)          | Complete |
+| moreCoffee.py | 2.0     | Updated Project to Print a Cup of Coffee and Fill it. | [More Coffee](https://github.com/CyberThulhu22/Python-Projects/blob/master/2_Fun_Python/moreCoffee.py) | Complete |
 ---
 
 ## Python Work Projects
 
-| Topic | Description | Links |
-|:------|:------------|:-----:|
-|       |             | []()  |
+| Topic | Version | Description | Links | Status     |
+|:------|:-------:|:------------|:-----:|:----------:|
+|       |         |             | []()  | Not Started|
 ---
 ###### Copyright (c) 2021 Jesse Leverett
