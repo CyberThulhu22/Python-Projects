@@ -13,7 +13,7 @@ COPYRIGHT © 2021 Jesse Leverett
 
 import requests
 from pprint import pprint as pp
-API_KEY = "68692299875344e9b961272cef8b69a6"
+API_KEY = "API_KEY_DELETED" # Deleted API Key.. Also changed API Key on Site
 IP_LIST = ["131.253.12.5", "131.91.4.55", "192.224.113.15", "199.60.28.111"]
 
 for IP in IP_LIST:
