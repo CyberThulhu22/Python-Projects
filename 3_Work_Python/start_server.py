@@ -17,7 +17,6 @@ __license__ = "MIT License"
 __version__ = "0.1"
 
 # Imports
-import os
 import sys
 import socket
 
