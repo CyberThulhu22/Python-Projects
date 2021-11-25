@@ -8,7 +8,7 @@
 
 | Topic               | Version | Description | Links          | Status    |
 |:--------------------|:-------:|:------------|:--------------:|:---------:|
-|Python - Hello World | 0.0     | First Program for Python                    |[Hello World](https://github.com/CyberThulhu22/Python-Projects/blob/master/1_Practice_Python/_PYTHON_LEARNING__Hello_World.py)         |Not Started|
+|Python - Hello World | 1.0     | First Program for Python                    |[Hello World](https://github.com/CyberThulhu22/Python-Projects/blob/master/1_Practice_Python/_PYTHON_LEARNING__Hello_World.py)         |Completed|
 |Python - Basics      | 0.0     | Learning basics of Python                   |[Basics](https://github.com/CyberThulhu22/Python-Projects/blob/master/1_Practice_Python/_PYTHON_LEARNING_BASICS.py)                    |Not Started|
 |Python - Data Types  | 0.0     | Learning Data Types of Python               |[Data Types](https://github.com/CyberThulhu22/Python-Projects/blob/master/1_Practice_Python/_PYTHON_LEARNING__Data_Types.py)           |Not Started|
 |Python - Variables   | 0.0     | Learning Variables for Python               |[Variables](https://github.com/CyberThulhu22/Python-Projects/blob/master/1_Practice_Python/_PYTHON_LEARNING__Variables.py)             |Not Started|
