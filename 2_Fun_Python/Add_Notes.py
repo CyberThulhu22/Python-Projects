@@ -2,12 +2,13 @@
 #-*- Coding: utf-8 -*-
 
 """
-NAME: add_note.py
-VERSION: 1.0
-AUTHOR: Jesse Leverett (CyberThulhu)
-STATUS: Building Initial code framework
-DESCRIPTION: 
+NAME:           Add_Notes.py
+VERSION:        1.0
+AUTHOR:         Jesse Leverett (CyberThulhu)
+STATUS:         Building Initial code framework
+DESCRIPTION:    Allows a User to Add Notes to a '.txt' Document
 TO-DO:
+USAGE:
 COPYRIGHT © 2021 Jesse Leverett
 """
 # Imports
@@ -16,14 +17,19 @@ import argparse
 import datetime
 
 # Instantiate Parser
-parser = argparse.ArgumentParser(description='Just a simple')
+PROG_NAME = ''
+DESC_TEXT = ''
+EPIL_TEXT = ''
+parser = argparse.ArgumentParser(prog='', description='Just a simple', epilog='', )
 
 # Add Parser Arguments
-parser.add_argument('-o', '--output', metavar=r'drive:\outfile.txt', type=str, help='Location to send Output')
-parser.add_argument('-t', '--timestamp', default=False, action='store_true', type=bool, help='Option to Timestamp each newline (Default: False)')
+OUTP_HELP_TEXT = 'File path to Write/Append Output'
+TIME_HELP_TEXT = 'Option to Timestamp Newlines (Default: False)'
+parser.add_argument('-o', dest='output', metavar=r'outfile.txt', type=str, help=OUTP_HELP_TEXT)
+parser.add_argument('-t', dest='timestamp', default=False, action='store_true', type=bool, help=TIME_HELP_TEXT)
 
 # Parse through created Arguments
-args = parser.parse_args()
+pargs = parser.parse_args()
 
 
 # Defined Functions
@@ -32,6 +38,8 @@ def check_file_exists():
 
 def timestamp_line():
     return "{}".format(datetime.datetime.now().strftime("%H:%M:%S"))
+
+def main():
 
 while True:
     try:
