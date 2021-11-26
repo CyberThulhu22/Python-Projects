@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 -tt
 #-*- Coding: utf-8 -*-
 
 """
@@ -8,18 +8,19 @@ AUTHOR:         Jesse Leverett (CyberThulhu)
 STATUS:         Building Initial code framework
 DESCRIPTION:    Allows a User to Add Notes to a '.txt' Document
 TO-DO:
-USAGE:
+USAGE:          Add_Notes.py [-h] -o <output_file.txt> [-t]
 COPYRIGHT © 2021 Jesse Leverett
 """
 # Imports
 import sys
 import argparse
 import datetime
+from os.path import exists, abspath
 
 # Instantiate Parser
-PROG_NAME = ''
-DESC_TEXT = ''
-EPIL_TEXT = ''
+PROG_NAME = "Add_Notes"
+DESC_TEXT = "Allows a User to Add Notes to a '.txt' Document"
+EPIL_TEXT = "COPYRIGHT © 2021 Jesse Leverett"
 parser = argparse.ArgumentParser(prog='', description='Just a simple', epilog='', )
 
 # Add Parser Arguments
@@ -36,19 +37,23 @@ pargs = parser.parse_args()
 def check_file_exists():
     pass
 
-def timestamp_line():
+def timestamp_line() -> str:
+    """ Returns Time String """
     return "{}".format(datetime.datetime.now().strftime("%H:%M:%S"))
 
-def main():
+def main() -> None:
+    """ Main Function """
+    while True:
+        try:
+            newline = str(input("Enter Note"))
+            with open(pargs.output, "a") as file:
+                if pargs.timestamp:
+                    file.writelines(timestamp_line() + newline + "\n\r")
+                else:
+                    file.writelines(newline + "\n\r")
+        except KeyboardInterrupt:
+            break
+    sys.exit(0)
 
-while True:
-    try:
-        newlink = input("Enter Website Link: ")
-
-        with open(r"C:\Users\Jesse\OneDrive\Desktop\References_for_SANSSummit_ThreatHunting.txt", "a") as websitelinks:
-            websitelinks.writelines(newlink + "\n\r")
-                            
-    except KeyboardInterrupt:
-        break
-
-sys.exit(0)
+if __name__ == "__main__":
+    main()
